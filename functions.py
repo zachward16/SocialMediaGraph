@@ -16,11 +16,13 @@ import cdlib.algorithms as algo
 import cdlib.viz as viz
 import matplotlib.pyplot as plt
 
+
 def louvain(
     g_original: object,
     weight: str = "weight",
     resolution: float = 1.0,
-    randomize: int = None) -> NodeClustering:
+    randomize: int = None,
+) -> NodeClustering:
     """
     Louvain  maximizes a modularity score for each community.
     The algorithm optimises the modularity in two elementary phases:
@@ -80,4 +82,3 @@ def louvain(
             "randomize": randomize,
         },
     )
-)
