@@ -10,19 +10,17 @@ from cdlib.classes.node_clustering import NodeClustering
 import community.community_louvain as community_louvain
 from community import community_louvain
 import cdlib as cd
-from collections import defaultdict
+from collections import defaultdict, Counter
 import networkx as nx
 import cdlib.algorithms as algo
 import cdlib.viz as viz
 import matplotlib.pyplot as plt
 
-
 def louvain(
     g_original: object,
     weight: str = "weight",
     resolution: float = 1.0,
-    randomize: int = None,
-) -> NodeClustering:
+    randomize: int = None) -> NodeClustering:
     """
     Louvain  maximizes a modularity score for each community.
     The algorithm optimises the modularity in two elementary phases:
@@ -82,3 +80,7 @@ def louvain(
             "randomize": randomize,
         },
     )
+
+def get_degrees(edges):
+    counter = Counter(edges)
+    return counter.most_common()
