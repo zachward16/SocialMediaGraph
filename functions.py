@@ -15,6 +15,7 @@ import networkx as nx
 import cdlib.algorithms as algo
 import cdlib.viz as viz
 import matplotlib.pyplot as plt
+import community
 
 def louvain(
     g_original: object,
@@ -84,3 +85,14 @@ def louvain(
 def get_degrees(edges):
     counter = Counter(edges)
     return counter.most_common()
+
+
+n = 5
+g = nx.complete_graph(2*n)
+part = dict([])
+for node in g.nodes() :
+    part[node] = node % 2
+    ind = community.induced_graph(part, g)
+    goal = nx.Graph()
+    oal.add_weighted_edges_from([(0,1,n*n),(0,0,n*(n-1)/2), (1, 1, n*(n-1)/2)])  # NOQA
+    nx.is_isomorphic(ind, goal)
