@@ -8,7 +8,6 @@ import pandas as pd
 from platform import node
 from cdlib.classes.node_clustering import NodeClustering
 import community.community_louvain as community_louvain
-from community import community_louvain
 import cdlib as cd
 from collections import defaultdict, Counter
 import networkx as nx
@@ -85,14 +84,3 @@ def louvain(
 def get_degrees(edges):
     counter = Counter(edges)
     return counter.most_common()
-
-
-n = 5
-g = nx.complete_graph(2*n)
-part = dict([])
-for node in g.nodes() :
-    part[node] = node % 2
-    ind = community.induced_graph(part, g)
-    goal = nx.Graph()
-    oal.add_weighted_edges_from([(0,1,n*n),(0,0,n*(n-1)/2), (1, 1, n*(n-1)/2)])  # NOQA
-    nx.is_isomorphic(ind, goal)
